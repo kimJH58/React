@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import {useState} from 'react';
+function App(){
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const onSubmit = () =>{
+    console.log(title, body)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <div className="mb-3">
+        <label className="form-label">Title</label>
+        <input 
+          className="form-control" 
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value)
+          }}
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Body</label>
+        <textarea
+          className="form-control" 
+          value={body}
+          rows="20"
+          onChange={(e) => {
+            setBody(e.target.value)
+          }}
+        />
+      </div>
+      <button
+        onClick={onSubmit} 
+        className="btn btn-primary"
         >
-          Learn React
-        </a>
-      </header>
+          Post
+        </button>
     </div>
-  );
+  )
 }
 
 export default App;
