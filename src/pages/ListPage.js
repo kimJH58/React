@@ -19,7 +19,6 @@ const ListPage = () =>{
         getPosts();
     }, []);
 
-
     return (
         <div>
             <div className='d-flex justify-content-between'>
@@ -35,16 +34,16 @@ const ListPage = () =>{
                     <Card 
                         key = {post.id} 
                         title={post.title}
-                        onClick={() => history.push('/blogs/edit')}
+                        onClick={() => {history.push({
+                            pathname : '/blogs/edit',
+                            state : {
+                                id : post.id
+                            }
+                        })}}
                     >
                         {/* 한개의 element만 가능
                         <button>button</button> */}
                     </Card>
-                    // <div key={post.id} className="card mb-3">
-                    //     <div className="card-body">
-                    //         {post.title}
-                    //     </div>
-                    // </div>
                 )
             })}
         </div>

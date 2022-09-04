@@ -17,9 +17,10 @@ var mysqlConfig = {
 
 var conn = new mysql(mysqlConfig);
 
-router.post('/createPage', function(req, res) {
+router.post('/post', function(req, res) {
     console.log(req.body);
     var resultCode = 200;
+    var id = req.body.id;
     var title = req.body.title;
     var body = req.body.body;
 
@@ -31,7 +32,11 @@ router.post('/createPage', function(req, res) {
         resultCode = 400;
         return;
     }
-    var sql = `INSERT INTO tbl_blog_post (title, body) VALUE ("`+title+`","`+body+`");`;
+    if(id == 0){
+        var sql = `INSERT INTO tbl_blog_post (title, body) VALUE ("`+title+`","`+body+`");`;
+    }else{
+        var sql = `UPDATE tbl_blog_post SET title="${title}", body="${body}" WHERE id=${id};`;
+    }
     conn.query(sql);
     res.send({result:resultCode});
 });
@@ -41,8 +46,8 @@ router.get('/getBlogList', (req, res) => {
     res.send(list);
 });
 
-router.get('/getPost', (req, res)=>{
-    var id =req.query.id;
+router.get('/getPost/:id', (req, res)=>{
+    var id =req.params.id;
     
     var data = conn.query(`SELECT * FROM tbl_blog_post WHERE id=${id}`);
     if(data.length < 1){
