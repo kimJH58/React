@@ -10,7 +10,7 @@ const ListPage = () =>{
     const [posts, setPosts] = useState([]);
 
     const getPosts = () => {
-        axios.get('http://localhost:3001/posts').then((res) =>{
+        axios.get('http://localhost:3002/api/getBlogList').then((res) =>{
             setPosts(res.data);
         })
     }

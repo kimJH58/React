@@ -36,5 +36,22 @@ router.post('/createPage', function(req, res) {
     res.send({result:resultCode});
 });
 
+router.get('/getBlogList', (req, res) => {
+    var list = conn.query(`SELECT * FROM tbl_blog_post;`);
+    res.send(list);
+});
+
+router.get('/getPost', (req, res)=>{
+    var id =req.query.id;
+    
+    var data = conn.query(`SELECT * FROM tbl_blog_post WHERE id=${id}`);
+    if(data.length < 1){
+        res.send({resultCode:400, data:`no data`});
+        return;
+    }
+    res.send({resultCode:200, data});
+})
+
+
 
 module.exports = router;
