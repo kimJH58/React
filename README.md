@@ -1,5 +1,7 @@
 # Study React - 1
- - making blog web page
- - basic React tools
+
+ - React
+ - Node
+ - mySql
  
- using React for client side / Node for server side
+ Study basic React tools with making blog web page
