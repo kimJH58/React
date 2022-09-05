@@ -35,12 +35,23 @@ const ListPage = () =>{
                     <Card 
                         key = {post.id} 
                         title={post.title}
-                        onClick={() => {history.push({
-                            pathname : '/blogs/edit',
+                        onClick={()=>{history.push({
+                            pathname : '/blogs/read',
                             state : {
-                                id : post.id
+                                id: post.id,
+                                title:post.title,
+                                body:post.body
                             }
                         })}}
+                        onClick_edit={(event) => {
+                            event.stopPropagation();
+                            history.push({
+                                pathname : '/blogs/edit',
+                                state : {
+                                    id : post.id
+                                }
+                            })
+                        }}
                     >
                         {/* 한개의 element만 가능 */}
                         {/* <button>
