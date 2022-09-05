@@ -38,9 +38,7 @@ const ListPage = () =>{
                         onClick={()=>{history.push({
                             pathname : '/blogs/read',
                             state : {
-                                id: post.id,
-                                title:post.title,
-                                body:post.body
+                                post:post
                             }
                         })}}
                     >
