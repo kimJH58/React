@@ -43,16 +43,21 @@ const ListPage = () =>{
                                 body:post.body
                             }
                         })}}
-                        onClick_edit={(event) => {
-                            event.stopPropagation();
-                            history.push({
-                                pathname : '/blogs/edit',
-                                state : {
-                                    id : post.id
-                                }
-                            })
-                        }}
                     >
+                        <button 
+                            className='btn btn-success btn-sm'
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                history.push({
+                                    pathname : '/blogs/edit',
+                                    state : {
+                                        id : post.id
+                                    }
+                                })
+                            }}
+                        >
+                            edit
+                        </button>
                         {/* 한개의 element만 가능 */}
                         {/* <button>
                             delete

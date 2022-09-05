@@ -8,12 +8,6 @@ const Card = (props) =>{
             <div className="card-body">
                 <div className='d-flex justify-content-between'>
                     <div>{props.title}</div>
-                    <button 
-                        className='btn btn-success'
-                        onClick={props.onClick_edit}
-                    >
-                        edit
-                    </button>
                     {/* props.children 이 있을경우 */}
                     {props.children && <div>{props.children}</div>}
                 </div>
@@ -25,14 +19,12 @@ const Card = (props) =>{
 Card.propTypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.element,
-    onClick_edit: PropTypes.func,
     onClick: PropTypes.func
 };
 
 // props 의 데이터가 없을경우
 Card.defaultProps = {
     children:null,
-    onClick_edit: () => {},
     onClick: () => {}
 }
 
