@@ -17,6 +17,15 @@ const EditPage = () =>{
         getData();
     }, []);
 
+    const deletePost = (id)=>{
+        axios.get('http://localhost:3002/api/deletePost?id='+id).then((res)=>{
+    
+        }).catch(function(err){
+            console.log(id)
+            console.log(err);
+        })
+    }
+
     if(data.id){
         return (
             <div>
@@ -26,7 +35,14 @@ const EditPage = () =>{
                     title = {data.title}
                     body = {data.body}
                     submit = 'edit'
-                />
+                >
+                <button
+                    className="btn btn-danger"
+                    onClick={() => deletePost(data.id)}
+                >
+                    delete
+                </button>
+                </BlogForm>
             </div>
         )
     }

@@ -17,8 +17,8 @@ var mysqlConfig = {
 
 var conn = new mysql(mysqlConfig);
 
+// 추가 : id = 0
 router.post('/post', function(req, res) {
-    console.log(req.body);
     var resultCode = 200;
     var id = req.body.id;
     var title = req.body.title;
@@ -26,14 +26,16 @@ router.post('/post', function(req, res) {
 
     if(title == undefined){
         resultCode = 400;
+        res.send({result:resultCode});
         return;
     }
     if(body == undefined){
         resultCode = 400;
+        res.send({result:resultCode});
         return;
     }
     if(id == 0){
-        var sql = `INSERT INTO tbl_blog_post (title, body) VALUE ("`+title+`","`+body+`");`;
+        var sql = `INSERT INTO tbl_blog_post (title, body) VALUE ("${title}","${body}");`;
     }else{
         var sql = `UPDATE tbl_blog_post SET title="${title}", body="${body}" WHERE id=${id};`;
     }
@@ -41,7 +43,7 @@ router.post('/post', function(req, res) {
     res.send({result:resultCode});
 });
 
-router.get('/getBlogList', (req, res) => {
+router.get('/getPostList', (req, res) => {
     var list = conn.query(`SELECT * FROM tbl_blog_post;`);
     res.send(list);
 });
@@ -55,6 +57,13 @@ router.get('/getPost/:id', (req, res)=>{
         return;
     }
     res.send({resultCode:200, data});
+})
+
+router.get('/deletePost', (req, res)=>{
+    var id = req.query.id;
+    console.log(id);
+    conn.query(`DELETE FROM tbl_blog_post WHERE id = ${id}`);
+    res.send();
 })
 
 

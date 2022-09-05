@@ -5,12 +5,13 @@ import Card from '../components/Card';
 import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router';
 
+
 const ListPage = () =>{
     const history = useHistory();
     const [posts, setPosts] = useState([]);
 
     const getPosts = () => {
-        axios.get('http://localhost:3002/api/getBlogList').then((res) =>{
+        axios.get('http://localhost:3002/api/getPostList').then((res) =>{
             setPosts(res.data);
         })
     }
@@ -24,7 +25,7 @@ const ListPage = () =>{
             <div className='d-flex justify-content-between'>
                 <h1>Blogs</h1>
                 <div>
-                    <Link to="/blogs/create" className="btn btn-success">
+                    <Link to="/blogs/create" className="btn btn-primary">
                         New
                     </Link>
                 </div>
@@ -41,8 +42,10 @@ const ListPage = () =>{
                             }
                         })}}
                     >
-                        {/* 한개의 element만 가능
-                        <button>button</button> */}
+                        {/* 한개의 element만 가능 */}
+                        {/* <button>
+                            delete
+                        </button> */}
                     </Card>
                 )
             })}

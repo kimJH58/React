@@ -46,6 +46,7 @@ const BlogForm = (props)=>{
               >
               {props.submit}
           </button>
+          {props.children}
       </div>
   )
 
