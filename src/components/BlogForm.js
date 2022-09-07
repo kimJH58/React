@@ -1,20 +1,26 @@
 import React from 'react';
 import {useState} from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router';
 
 const BlogForm = (props)=>{
+  const history = useHistory();
   const [title, setTitle] = useState(props.title);
   const [body, setBody] = useState(props.body);
   const [id] = useState(props.id);
 
   const onSubmit = () =>{
+    try{
       axios.post('http://localhost:3002/api/post', 
       {title, body, id}
-      )
-      .catch(function(err){
-        console.log(title, body)
-        console.log(err);
+      );
+      history.push({
+        pathname : '/blogs'
       })
+    }catch(err){
+      console.log(title, body)
+      console.log(err);
+    }
   }
 
   return (

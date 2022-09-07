@@ -1,11 +1,12 @@
 import React from 'react';
 import BlogForm from "../components/BlogForm";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 import { useState, useEffect } from "react";
 
 const EditPage = () =>{
+    const history = useHistory();
     const location = useLocation();
     const [data, setData] = useState({});
     const getData = () =>{
@@ -18,12 +19,14 @@ const EditPage = () =>{
     }, []);
 
     const deletePost = (id)=>{
-        axios.get('http://localhost:3002/api/deletePost?id='+id).then((res)=>{
-    
-        }).catch(function(err){
+        try{
+            axios.get('http://localhost:3002/api/deletePost?id='+id);
+            history.push('/blogs');
+        }catch(err){
             console.log(id)
             console.log(err);
-        })
+        }
+    
     }
 
     if(data.id){
