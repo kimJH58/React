@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import ListPage from './pages/ListPage';
 import CreatePage from './pages/CreatePage';
 import ReadPage from './pages/ReadPage';
+import ShowPage from './pages/ShowPage';
 const routes = [
     {
       path:'/',
@@ -23,7 +24,11 @@ const routes = [
     {
       path:'/blogs/read',
       component:ReadPage
-    }
+    },
+    {
+      path:'/blogs/:id',
+      component:ShowPage
+    },
 ];
 
 export default routes

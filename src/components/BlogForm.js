@@ -13,10 +13,12 @@ const BlogForm = (props)=>{
     try{
       axios.post('http://localhost:3002/api/post', 
       {title, body, id}
-      );
-      history.push({
-        pathname : '/blogs'
-      })
+      ).then(() =>{
+        history.push('/blogs')
+      });
+      // history.push({
+      //   pathname : '/blogs'
+      // })
     }catch(err){
       console.log(title, body)
       console.log(err);
