@@ -14,6 +14,7 @@ const ReadPage = () =>{
                     <h6 className="card-subtitle mb-2 text-muted">
                         {post.created_at}
                     </h6>
+                    <br/>
                     <p className="card-text">
                         {post.body}
                     </p>

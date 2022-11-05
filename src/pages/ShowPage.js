@@ -28,6 +28,7 @@ const ShowPage = () =>{
         <div>
             <h1>{post.title}</h1>
             <small className='text-muted'>{post.created_at}</small>
+            <br/>
             <p>{post.body}</p>
 
             {/* <button onClick={()=>history.push('/blogs/3')} className="btn btn-primary">Click</button> */}
