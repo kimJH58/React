@@ -4,6 +4,7 @@ import ListPage from './pages/ListPage';
 import CreatePage from './pages/CreatePage';
 import ReadPage from './pages/ReadPage';
 import ShowPage from './pages/ShowPage';
+import loginPage from './pages/LoginPage';
 const routes = [
     {
       path:'/',
@@ -29,6 +30,10 @@ const routes = [
       path:'/blogs/:id',
       component:ShowPage
     },
+    {
+      path:'/loginPage',
+      component:loginPage
+    }
 ];
 
 export default routes
