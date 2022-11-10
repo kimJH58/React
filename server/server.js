@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const api = require('./routes/index');
+const user = require('./routes/user');
 
 const corsOptions = {
     origin: "http://localhost:3000",
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api', api);
+app.use('/user',user);
 
 
 
