@@ -4,7 +4,7 @@ import ListPage from './pages/ListPage';
 import CreatePage from './pages/CreatePage';
 import ReadPage from './pages/ReadPage';
 import ShowPage from './pages/ShowPage';
-import loginPage from './pages/LoginPage';
+import LoginPage from './pages/LoginPage';
 const routes = [
     {
       path:'/',
@@ -31,8 +31,8 @@ const routes = [
       component:ShowPage
     },
     {
-      path:'/loginPage',
-      component:loginPage
+      path:'/LoginPage',
+      component:LoginPage
     }
 ];
 

@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from 'axios';
 
-const ReadPage = () =>{
+const LoginPage = () =>{
+    const [id, setId] = useState('');
+    const [pwd, setPwd] = useState('');
+
+    const onSubmit = () =>{
+        try{
+            axios.post('http://localhost:3002/user/login', {id, pwd}).then(()=>{
+                /**다음 경로 */
+            })
+        }catch(err){
+            console.log(err);
+        }
+    }
     return (
         <div>
             <h4 className="text-center">Login</h4>
@@ -20,6 +33,7 @@ const ReadPage = () =>{
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button
                         type="submit" className="btn btn-primary"
+                        onClick={onSubmit}
                     >
                         Login
                     </button>
@@ -29,4 +43,4 @@ const ReadPage = () =>{
     )
 }
 
-export default ReadPage;
+export default LoginPage;
